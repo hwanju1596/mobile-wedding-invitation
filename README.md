@@ -8,7 +8,7 @@ React와 Typescript를 기반으로 개발되었으며, Vite를 사용하여 빠
 
 eslint와 prettier를 적용했고, emotion/styled를 활용하여 스타일링을 헸습니다.
 
-갤러리는 react-photoswipe-gallery, 지도는 react-naver-maps 를 사용했습니다.
+갤러리는 react-photoswipe-gallery를 사용했습니다.
 
 
 ![demo2.gif](demo2.gif)
@@ -53,14 +53,13 @@ npm run dev
 
 ## Clone 후, 바로 배포하기
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fheejin-hwang%2Fmobile-wedding-invitation)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fhwanju1596%2Fmobile-wedding-invitation)
 
 
 ## 참고 자료
 
 - 개발자: [heejin-hwang](https://github.com/heejin-hwang)
 - react-photoswipe-gallery 라이브러리: [react-photoswipe-gallery](https://www.npmjs.com/package/react-photoswipe-gallery)
-- react-naver-maps 공식문서: [react-naver-maps](https://zeakd.github.io/react-naver-maps/)
 - 네이버 클라우드 플랫폼: [NAVER CLOUD PLATFORM](https://console.ncloud.com/naver-service/application)
 - 카카오 디벨로퍼스: https://developers.kakao.com/
 - 토스 아이디 만들기: https://toss.me/
@@ -71,7 +70,4 @@ npm run dev
 ## 또 하나의 모바일 청첩장
 좀 더 정돈된 디자인을 윈한다면, [스몰빅웨딩](https://bit.ly/4jEJQcg)에서 귀여운 포인트가 가득한 청첩장을 이용해 볼 수 있습니다.
 
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=heejin-hwang/mobile-wedding-invitation&type=Date)](https://star-history.com/#heejin-hwang/mobile-wedding-invitation&Date)
 
