@@ -37,7 +37,7 @@ function App() {
   };
 
   return (
-    <NavermapsProvider ncpClientId={ncpClientId}>
+    <>
       <Container>
         <Wrapper>
           <Main />
@@ -64,7 +64,7 @@ function App() {
         </Wrapper>
         <FloatingBar isVisible={isVisible} />
       </Container>
-    </NavermapsProvider>
+    </>
   );
 }
 

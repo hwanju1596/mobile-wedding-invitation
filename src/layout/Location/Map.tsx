@@ -1,26 +1,63 @@
+import { useEffect, useState } from 'react';
 import data from 'data.json';
-import { Container as MapDiv, Marker, NaverMap, useNavermaps } from 'react-naver-maps';
+
+let mapInstance: naver.maps.Map | null = null;
+
+const loadScript = (src: string, callback: () => void) => {
+  const script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = src;
+  script.onload = () => callback();
+  document.head.appendChild(script);
+};
 
 const Map = () => {
   const { lat, lon } = data.mapInfo;
-  const navermaps = useNavermaps();
+  const [isMapLoaded, setMapLoaded] = useState(false);
+
+  const initMap = () => {
+    const mapOptions = {
+      zoomControl: true,
+      zoomControlOptions: {
+        style: naver.maps.ZoomControlStyle.SMALL,
+        position: naver.maps.Position.TOP_RIGHT,
+      },
+      center: new naver.maps.LatLng(lat, lon),
+      zoom: 17,
+      draggable: false,
+      pinchZoom: false,
+      scrollWheel: false,
+      keyboardShortcuts: false,
+    };
+
+    if (document.getElementById('map')) {
+      mapInstance = new naver.maps.Map('map', mapOptions);
+    }
+
+    const marker = new naver.maps.Marker({
+      position: new naver.maps.LatLng(lat, lon),
+      map: mapInstance ?? undefined,
+    });
+
+    setMapLoaded(true);
+  };
+
+  useEffect(() => {
+    if (typeof naver === 'undefined') {
+      loadScript(
+        `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${import.meta.env.VITE_APP_NAVERMAPS_CLIENT_ID as string ?? ""}`,
+        initMap,
+      );
+    } else {
+      initMap();
+    }
+  }, [lat, lon]);
 
   return (
-    <MapDiv
-      style={{
-        width: '100%',
-        height: '300px',
-      }}>
-      <NaverMap
-        defaultCenter={new navermaps.LatLng(lat, lon)}
-        defaultZoom={17}
-        draggable={false}
-        pinchZoom={false}
-        scrollWheel={false}
-        keyboardShortcuts={false}>
-        <Marker defaultPosition={new navermaps.LatLng(lat, lon)} />
-      </NaverMap>
-    </MapDiv>
+    <div
+      id="map"
+      style={{ width: '100%', height: '300px', marginTop: '40px' }}
+    />
   );
 };
 
